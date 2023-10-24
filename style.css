@@ -9,16 +9,10 @@ html {
 
 body {
     font-family: "interstate", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    margin: 0;
-    color: var(--secondary-color);
 }
 
 li {
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 nav {
@@ -26,18 +20,14 @@ nav {
 }
 
 h1 {
+    font-size: 2rem;
     margin: 0;
 }
 
 ul {
     display: flex;
     justify-content: space-between;
-    padding: 0 2rem 0 2rem;
-}
-
-a:hover {
-    text-decoration: none;
-
+    padding: 0 1.5rem 0 1.5rem;
 }
 
 .nav-item {
@@ -51,49 +41,35 @@ a:hover {
 }
 
 .map-container {
-    background: rgb(212, 240, 249);
     height: 75vh;
     position: relative;
     width: 100%;
 }
 
-.marker {
-    background-image: url('ellipse.png');
-    background-size: cover;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 25px;
-    width: 25px;
-}
-
-.popup {
-    align-items: center;
-    display: flex;
-    text-align: center;
-    width: 200%;
-}
-
-#coord-container {
-    display: none;
+#info-container {
+    display: block;
     margin-top: 2rem;
     text-align: center;
 }
 
-#instructions {
-    display: block;
-    margin-top: 3rem;
-    text-align: center;
+#coord-container {
+    display: none;
 }
 
-#instructions>h1 {
-    font-size: 2rem;
+#instructions {
+    display: block;
+    margin-top: 2rem;
+    text-align: center;
     font-weight: 300;
 }
 
 .copied {
-    font-size: 1.5rem;
     font-weight: 300;
     margin-top: .7rem;
+}
+
+p {
+    font-size: 1.5rem;
 }
 
 .close-btn {
@@ -157,22 +133,19 @@ li>h1:hover {
 .settings-desc {
     margin: 1.5rem 0 1.5rem 0;
     line-height: 3rem;
-    font-size: 1.5rem;
     font-weight: 300;
 }
 
 #error-msg {
     color: red;
-    font-size: 2rem;
     display: none;
-    margin-top: 3rem;
+    margin-top: 2rem;
     text-align: center;
 }
 
 .checkbox-container {
     margin-bottom: 1.5rem;
     padding: 0;
-
 }
 
 .precision-check {
