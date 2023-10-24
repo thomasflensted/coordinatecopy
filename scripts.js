@@ -5,6 +5,7 @@ mapboxgl.accessToken = ACCESS_TOKEN;
 document.addEventListener("DOMContentLoaded", function () {
 
     var highPrecision = false;
+    document.getElementById("precision-check").checked = false;
 
     // generate map
     const map = new mapboxgl.Map({
