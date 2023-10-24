@@ -37,7 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // show about dialogue when about button is clicked
     const about = document.getElementById("about-btn");
     about.addEventListener("click", function () {
-        document.getElementById("about-dialogue").style.display = "block";
+        current_status = document.getElementById("about-dialogue").style.display;
+        document.getElementById("about-dialogue").style.display = current_status == "block" ? "none" : "block";
     })
 
     // close about dialogue when close button is clicked
@@ -87,11 +88,16 @@ function getUserPosition(map) {
 function handleError(err) {
 
     const errors = {
-        1: "User denied access to location",
-        2: "Unable to retrieve location",
-        3: "Time out"
+        1: "Access to location denied. Check privacy settings or connection.",
+        2: "Unable to retrieve location. Check connection.",
+        3: "Request timed out. Check connection."
     };
-    console.log(errors[err.code]);
+
+    const errorMsg = document.getElementById("error-msg");
+    document.getElementById("instructions").style.display = "none";
+    document.getElementById("coord-container").style.display = "none";
+    errorMsg.innerHTML = errors[err.code];
+    errorMsg.style.display = "block";
 }
 
 function resetMap(map) {
@@ -124,8 +130,9 @@ function copyCoordsToClipboard(lat, lng) {
 
 function hideInstructionsAndShowCoords(lat, lng) {
 
+    document.getElementById("error-msg").style.display = "none"; // hide error message
     document.getElementById("instructions").style.display = "none"; // hide instructions
-    document.getElementById("coord-container").style.display = "block"; // display coordinates on screen
     document.getElementById("coords").innerHTML = lat + ", " + lng; // display coordinates on screen
+    document.getElementById("coord-container").style.display = "block"; // display coordinates on screen
 
 }

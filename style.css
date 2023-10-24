@@ -140,7 +140,7 @@ li>h1:hover {
 }
 
 .about-container {
-    background: rgb(255, 255, 255, .95);
+    background: rgb(255, 255, 255, .92);
     box-shadow: 0px 0px 58px -16px rgba(0, 0, 0, 0.46);
     border-radius: 10px;
     max-width: 25%;
@@ -159,4 +159,12 @@ li>h1:hover {
     line-height: 3rem;
     font-size: 1.5rem;
     font-weight: 300;
+}
+
+#error-msg {
+    color: red;
+    font-size: 2rem;
+    display: none;
+    margin-top: 3rem;
+    text-align: center;
 }
