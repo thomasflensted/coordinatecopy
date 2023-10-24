@@ -1,0 +1,162 @@
+:root {
+    --main-color: #FFFFFF;
+    --secondary-color: #273c75;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "interstate", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+    color: var(--secondary-color);
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    margin: 2rem;
+}
+
+h1 {
+    margin: 0;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem 0 2rem;
+}
+
+a:hover {
+    text-decoration: none;
+
+}
+
+.nav-item {
+    font-size: 1.7rem;
+}
+
+#map {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.map-container {
+    background: rgb(212, 240, 249);
+    height: 75vh;
+    position: relative;
+    width: 100%;
+}
+
+.marker {
+    background-image: url('ellipse.png');
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+}
+
+.popup {
+    align-items: center;
+    display: flex;
+    text-align: center;
+    width: 200%;
+}
+
+#coord-container {
+    display: none;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#instructions {
+    display: block;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+#instructions>h1 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.copied {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: .7rem;
+}
+
+.close-btn {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    outline: 1px solid var(--secondary-color);
+    border: none;
+}
+
+.close-btn:hover {
+    background: var(--secondary-color);
+    color: var(--main-color);
+}
+
+.map-btn {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    z-index: 10;
+}
+
+.loc-btn {
+    left: 10px;
+}
+
+.reset-btn {
+    right: 10px;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    top: 97vh;
+    text-align: center;
+}
+
+.footer>a {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+li>h1:hover {
+    cursor: pointer;
+}
+
+.about-container {
+    background: rgb(255, 255, 255, .95);
+    box-shadow: 0px 0px 58px -16px rgba(0, 0, 0, 0.46);
+    border-radius: 10px;
+    max-width: 25%;
+    padding: 4rem;
+    position: absolute;
+    z-index: 10;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: justify;
+    display: none;
+}
+
+.settings-desc {
+    margin: 1.5rem 0 1.5rem 0;
+    line-height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
