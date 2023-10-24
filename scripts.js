@@ -1,5 +1,10 @@
 const ACCESS_TOKEN = 'pk.eyJ1IjoidGhvbWFzZmxlbnN0ZWQiLCJhIjoiY2xsdDl0ZDlmMTJ3YTRvcHNlZGttdGlwbyJ9.tBYiw1WNmLoAYxRMd_a3dw';
 const DECIMALPOINTS = 5;
+const INITIAL_MAP_SETTINGS = {
+    center: [12.5, 29],
+    zoom: 1.4,
+};
+
 mapboxgl.accessToken = ACCESS_TOKEN;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -12,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
         container: 'map', //container ID
         style: 'mapbox://styles/thomasflensted/clltb8sq500aq01qx45ve35k7',
         projection: 'mercator',
-        center: [12.5, 25],
-        zoom: 1.5
+        center: INITIAL_MAP_SETTINGS.center,
+        zoom: INITIAL_MAP_SETTINGS.zoom,
     });
 
     // show and copy coordinates when map is clicked
@@ -83,20 +88,26 @@ function flyToUserPos(map, pos, highPrecision) {
 }
 
 function getUserPosition(map, highPrecision) {
+
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 7500,
+    }
+
     navigator.geolocation.getCurrentPosition(
         (position) => {
             flyToUserPos(map, position, highPrecision);
         }, (error) => {
             handleError(error);
-        }
+        }, (options)
     );
 }
 
 function handleError(err) {
 
     const errors = {
-        1: "Access to location denied. Check privacy settings or connection.",
-        2: "Unable to retrieve location. Check connection.",
+        1: "Access to location denied. Check privacy settings.",
+        2: "Unable to retrieve location. Check privacy settings or connection.",
         3: "Request timed out. Check connection."
     };
 
@@ -109,8 +120,8 @@ function handleError(err) {
 
 function resetMap(map) {
     map.flyTo({
-        center: [12.5, 25],
-        zoom: 1.5,
+        center: INITIAL_MAP_SETTINGS.center,
+        zoom: INITIAL_MAP_SETTINGS.zoom,
     })
 }
 

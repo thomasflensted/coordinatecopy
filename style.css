@@ -187,3 +187,14 @@ li>h1:hover {
     font-size: 1.2rem;
     margin-left: .75rem;
 }
+
+@media screen and (max-width: 600px) {
+    .map-container {
+        height: 60vh;
+    }
+
+    .about-container {
+        max-width: 90%;
+        top: 40%;
+    }
+}
