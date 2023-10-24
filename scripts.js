@@ -4,6 +4,8 @@ mapboxgl.accessToken = ACCESS_TOKEN;
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    var highPrecision = false;
+
     // generate map
     const map = new mapboxgl.Map({
         container: 'map', //container ID
@@ -18,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // create object that holds coordinates
         var coords = {
-            lat: e.lngLat.lat.toFixed(DECIMALPOINTS),
-            lng: e.lngLat.lng.toFixed(DECIMALPOINTS),
+            lat: highPrecision ? e.lngLat.lat : e.lngLat.lat.toFixed(DECIMALPOINTS),
+            lng: highPrecision ? e.lngLat.lng : e.lngLat.lng.toFixed(DECIMALPOINTS),
         };
 
         hideInstructionsAndShowCoords(coords.lat, coords.lng); // see function name
@@ -31,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // fly to user's position, display coordinates
     const loc_btn = document.getElementById("loc-btn");
     loc_btn.addEventListener("click", function () {
-        getUserPosition(map);
+        getUserPosition(map, highPrecision);
     })
 
     // show about dialogue when about button is clicked, close when clicked again
@@ -59,15 +61,19 @@ document.addEventListener("DOMContentLoaded", function () {
         location.reload();
     })
 
+    const highPrecisionCheck = document.getElementById("precision-check");
+    highPrecisionCheck.addEventListener("click", function () {
+        highPrecision = highPrecisionCheck.checked;
+    });
+
 });
 
-function flyToUserPos(map, pos) {
-    const lat = pos.coords.latitude;
-    const lng = pos.coords.longitude;
+function flyToUserPos(map, pos, highPrecision) {
+    const lat = highPrecision ? pos.coords.latitude : pos.coords.latitude.toFixed(DECIMALPOINTS);
+    const lng = highPrecision ? pos.coords.longitude : pos.coords.longitude.toFixed(DECIMALPOINTS);
     addMarkerAndRemovePrevious(lat, lng, map);
-    hideInstructionsAndShowCoords(lat.toFixed(DECIMALPOINTS), lng.toFixed(DECIMALPOINTS));
-    copyCoordsToClipboard(lat.toFixed(DECIMALPOINTS), lng.toFixed(DECIMALPOINTS));
-    console.log(lng, lat);
+    hideInstructionsAndShowCoords(lat, lng);
+    copyCoordsToClipboard(lat, lng);
     map.flyTo({
         center: [lng, lat],
         zoom: 16,
@@ -75,10 +81,10 @@ function flyToUserPos(map, pos) {
     });
 }
 
-function getUserPosition(map) {
+function getUserPosition(map, highPrecision) {
     navigator.geolocation.getCurrentPosition(
         (position) => {
-            flyToUserPos(map, position);
+            flyToUserPos(map, position, highPrecision);
         }, (error) => {
             handleError(error);
         }

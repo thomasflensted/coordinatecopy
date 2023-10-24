@@ -168,3 +168,22 @@ li>h1:hover {
     margin-top: 3rem;
     text-align: center;
 }
+
+.checkbox-container {
+    margin-bottom: 1.5rem;
+    padding: 0;
+
+}
+
+.precision-check {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+
+.precision-label {
+    font-size: 1.2rem;
+    margin-left: .75rem;
+}
