@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         getUserPosition(map);
     })
 
-    // show about dialogue when about button is clicked
+    // show about dialogue when about button is clicked, close when clicked again
     const about = document.getElementById("about-btn");
     about.addEventListener("click", function () {
         current_status = document.getElementById("about-dialogue").style.display;
