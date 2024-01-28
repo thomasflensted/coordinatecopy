@@ -5,4 +5,4 @@ Try it out here: https://copycoordinates.com/.
 
 ### Todo
 * Add search box
-* Convert to React app
+* Convert to React
